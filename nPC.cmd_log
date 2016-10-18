@@ -1,0 +1,11 @@
+xst -intstyle ise -ifn "C:/Users/Juan/Documents/GitHub/MonocicloProcesador/ProcesadorMonociclo/nPC.xst" -ofn "C:/Users/Juan/Documents/GitHub/MonocicloProcesador/ProcesadorMonociclo/nPC.syr" 
+xst -intstyle ise -ifn "C:/Users/Juan/Desktop/MonocicloProcesador/ProcesadorMonociclo/nPC.xst" -ofn "C:/Users/Juan/Desktop/MonocicloProcesador/ProcesadorMonociclo/nPC.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s500e-fg320-5 nPC.ngc nPC.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o nPC_map.ncd nPC.ngd nPC.pcf 
+par -w -intstyle ise -ol high -t 1 nPC_map.ncd nPC.ncd nPC.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml nPC.twx nPC.ncd -o nPC.twr nPC.pcf 
+xst -intstyle ise -ifn "C:/Users/Juan/Desktop/MonocicloProcesador/ProcesadorMonociclo/nPC.xst" -ofn "C:/Users/Juan/Desktop/MonocicloProcesador/ProcesadorMonociclo/nPC.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc3s500e-fg320-5 nPC.ngc nPC.ngd  
+map -intstyle ise -p xc3s500e-fg320-5 -cm area -ir off -pr off -c 100 -o nPC_map.ncd nPC.ngd nPC.pcf 
+par -w -intstyle ise -ol high -t 1 nPC_map.ncd nPC.ncd nPC.pcf 
+trce -intstyle ise -v 3 -s 5 -n 3 -fastpaths -xml nPC.twx nPC.ncd -o nPC.twr nPC.pcf 
