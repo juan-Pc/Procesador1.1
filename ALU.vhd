@@ -2,7 +2,7 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    02:26:10 10/17/2016 
+-- Create Date:    18:28:46 17/10/2016 
 -- Design Name: 
 -- Module Name:    ALU - Behavioral 
 -- Project Name: 
@@ -19,9 +19,7 @@
 ----------------------------------------------------------------------------------
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
-use IEEE.STD_LOGIC_ARITH.ALL;
-use IEEE.STD_LOGIC_UNSIGNED.All;
-use IEEE.NUMERIC_STD.ALL;
+use IEEE.STD_LOGIC_unsigned.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -32,62 +30,64 @@ use IEEE.NUMERIC_STD.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity Alu is
-    Port ( entrada_suma1 : in  STD_LOGIC_VECTOR (31 downto 0);
-           entrada_sum2 : in  STD_LOGIC_VECTOR (31 downto 0);
-           alu_op : in  STD_LOGIC_VECTOR (5 downto 0);
-           salida_ALU : out  STD_LOGIC_VECTOR (31 downto 0));
-end Alu;
+entity ALU is
+	Port ( Crs1 : in  STD_LOGIC_VECTOR (31 downto 0);
+          Crs2 : in  STD_LOGIC_VECTOR (31 downto 0);
+          ALU_Op : in STD_LOGIC_VECTOR (5 downto 0);
+			 ALU_Out : out STD_LOGIC_VECTOR (31 downto 0));
+end ALU;
 
-architecture Behavioral of Alu is
+architecture Behavioral of ALU is
 
 begin
-process(entrada_suma1, entrada_sum2, alu_op)
-begin
- case (alu_op) is 
-			when "000001" => -- add
-				salida_ALU <= entrada_suma1 + entrada_sum2;
-			when "000010" => -- addcc
-				salida_ALU <= entrada_suma1 + entrada_sum2;
-         when "000011" => -- addX
-				salida_ALU <= entrada_suma1 + entrada_sum2;
-         when "000100" => -- addXcc
-				salida_ALU <= entrada_suma1 + entrada_sum2;
-         when "000101" => -- sub
-				salida_ALU <= entrada_suma1 + entrada_sum2;				
-			when "000110" => -- subcc
-				salida_ALU <= entrada_suma1 - entrada_sum2;
-			when "000111" => -- subX
-				salida_ALU <= entrada_suma1 - entrada_sum2;
-         when "001000" => -- subXcc
-				salida_ALU <= entrada_suma1 - entrada_sum2;
-         when "001001" => -- and
-				salida_ALU <= entrada_suma1 - entrada_sum2;
-			when "001010" => -- andn
-				salida_ALU <= entrada_suma1 - entrada_sum2;	
-			when "001011" => --andNcc
-				salida_ALU <= entrada_suma1 and entrada_sum2;
-			when "001100" => --andcc
-				salida_ALU <= entrada_suma1 and entrada_sum2;
-         when "001101" => --or
-				salida_ALU <= entrada_suma1 and entrada_sum2;
-	      when "001110" => --orn
-				salida_ALU <= entrada_suma1 and entrada_sum2;	
-	      when "001111" => --orcc
-				salida_ALU <= entrada_suma1 and entrada_sum2;				
-			when "010000" => --orNcc
-				salida_ALU <= entrada_suma1 nand entrada_sum2;     
-			when "010010" => -- xor
-				salida_ALU <= entrada_suma1 or entrada_sum2;
-			when "010011" => -- xnor
-				salida_ALU <= entrada_suma1 or entrada_sum2;
-         when "010100" => -- xorcc
-				salida_ALU <= entrada_suma1 or entrada_sum2;				
-				
-			when others => --nop
-				salida_ALU <= (others=>'0');
-		end case;
-	end process; 
+
+process(Crs1,Crs2,ALU_Op)
+		begin
+			case (ALU_Op) is 
+				when "000000" => --add
+							ALU_Out <= Crs1 + Crs2; 
+				when "010000" => --addcc
+							ALU_Out <= Crs1 + Crs2;
+				when "011000" => --addX
+							ALU_Out <= Crs1 + Crs2;		
+				when "001000" => --addXcc
+							ALU_Out <= Crs1 + Crs2;								
+				when "000100" => --sub
+							ALU_Out <= Crs1 - Crs2; 
+				when "010100" => --subcc
+							ALU_Out <= Crs1 - Crs2;
+				when "001100" => --subX
+							ALU_Out <= Crs1 - Crs2;
+				when "011100" => --subXcc
+							ALU_Out <= Crs1 - Crs2;							
+				when "000010" => --or
+							ALU_Out <= Crs1 or Crs2; 
+				when "010010" => --orcc
+							ALU_Out <= Crs1 or Crs2;
+				when "010110" => --orncc
+							ALU_Out <= Crs1 or Crs2;							
+				when "000110" => --orn
+							ALU_Out <= Crs1 or not(Crs2); 
+				when "000001" => --and
+							ALU_Out <= Crs1 and Crs2; 
+				when "010001" => --andcc
+							ALU_Out <= Crs1 and Crs2; 
+				when "010101" => --andncc
+							ALU_Out <= Crs1 and Crs2; 							
+				when "000011" => --xor
+							ALU_Out <= Crs1 xor Crs2;
+				when "010011" => --xorcc
+							ALU_Out <= Crs1 xor Crs2; 
+				when "010111" => --xorncc
+							ALU_Out <= Crs1 xor Crs2; 							
+				when "000111" => --xnor
+							ALU_Out <= Crs1 xnor Crs2; 
+				when "000101" => --andn
+							ALU_Out <= Crs1 and not(Crs2); 
+				when others => 
+							ALU_Out <= (others=>'0');
+			end case;
+	end process;	
 
 end Behavioral;
 

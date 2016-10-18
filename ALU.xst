@@ -1,5 +1,5 @@
 set -tmpdir "D:/Biblioteca/Documents/Procesador/Procesador32/xst/projnav.tmp"
 set -xsthdpdir "D:/Biblioteca/Documents/Procesador/Procesador32/xst"
 elaborate
--ifn instructionMemory.prj
+-ifn ALU.prj
 -ifmt mixed

@@ -1,0 +1,6 @@
+vhdl work "UC.vhd"
+vhdl work "Sumador.vhd"
+vhdl work "PC.vhd"
+vhdl work "NPC.vhd"
+vhdl work "instructionMemory.vhd"
+vhdl work "Procesador_AMD_FULL.vhd"

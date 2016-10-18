@@ -1,1 +1,2 @@
 vhdl work "instructionMemory.vhd"
+vhdl work "IMTB.vhd"

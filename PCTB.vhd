@@ -2,15 +2,15 @@
 -- Company: 
 -- Engineer:
 --
--- Create Date:   16:47:25 04/25/2016
+-- Create Date:   15:02:31 04/23/2016
 -- Design Name:   
--- Module Name:   D:/Biblioteca/Documents/Procesador/Procesador32/IMTB.vhd
+-- Module Name:   D:/Biblioteca/Documents/Procesador/Procesador32/PCTB.vhd
 -- Project Name:  Procesador
 -- Target Device:  
 -- Tool versions:  
 -- Description:   
 -- 
--- VHDL Test Bench Created by ISE for module: instructionMemory
+-- VHDL Test Bench Created by ISE for module: PC
 -- 
 -- Dependencies:
 -- 
@@ -32,64 +32,72 @@ USE ieee.std_logic_1164.ALL;
 -- arithmetic functions with Signed or Unsigned values
 --USE ieee.numeric_std.ALL;
  
-ENTITY IMTB IS
-END IMTB;
+ENTITY PCTB IS
+END PCTB;
  
-ARCHITECTURE behavior OF IMTB IS 
+ARCHITECTURE behavior OF PCTB IS 
  
     -- Component Declaration for the Unit Under Test (UUT)
  
-    COMPONENT instructionMemory
+    COMPONENT PC
     PORT(
-         address : IN  std_logic_vector(31 downto 0);
-         reset : IN  std_logic;
-         outInstruction : OUT  std_logic_vector(31 downto 0)
+         Direccion : IN  std_logic_vector(31 downto 0);
+         Clock : IN  std_logic;
+         Reset : IN  std_logic;
+         NuevaDireccion : OUT  std_logic_vector(31 downto 0)
         );
     END COMPONENT;
     
 
    --Inputs
-   signal address : std_logic_vector(31 downto 0) := (others => '0');
-   signal reset : std_logic := '0';
+   signal Direccion : std_logic_vector(31 downto 0) := (others => '0');
+   signal Clock : std_logic := '0';
+   signal Reset : std_logic := '0';
 
  	--Outputs
-   signal outInstruction : std_logic_vector(31 downto 0);
-   -- No clocks detected in port list. Replace <clock> below with 
-   -- appropriate port name 
+   signal NuevaDireccion : std_logic_vector(31 downto 0);
 
+   -- Clock period definitions
+   constant Clock_period : time := 10 ns;
  
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
-   uut: instructionMemory PORT MAP (
-          address => address,
-          reset => reset,
-          outInstruction => outInstruction
+   uut: PC PORT MAP (
+          Direccion => Direccion,
+          Clock => Clock,
+          Reset => Reset,
+          NuevaDireccion => NuevaDireccion
         );
 
    -- Clock process definitions
+   Clock_process :process
+   begin
+		Clock <= '0';
+		wait for Clock_period/2;
+		Clock <= '1';
+		wait for Clock_period/2;
+   end process;
  
 
    -- Stimulus process
    stim_proc: process
-   begin		
+     begin		
       -- hold reset state for 100 ns.
-		reset <= '1';
-      wait for 30 ns;
+      reset <= '1';
+		-- insert stimulus here
+		wait for 30 ns;
 		reset <= '0';
-		address <= x"00000000";
+      wait for 30 ns;	
+		Direccion <= x"00000000"; 
+      reset <= '0'; 
 		wait for 30 ns;
-		address <= x"00000001";
+		Direccion <= x"00000001";
 		wait for 30 ns;
-		address <= x"00000002";
+		Direccion <= x"00000002";
 		wait for 30 ns;
-		address <= x"00000003";
-		wait for 30 ns;
-		address <= x"00000004";		
-
-      -- insert stimulus here 
+		Direccion <= x"00000003";   
 
       wait;
    end process;
-
 END;

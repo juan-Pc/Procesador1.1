@@ -1,20 +1,30 @@
-Running: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -o C:/Users/Juan/Desktop/MonocicloProcesador/ProcesadorMonociclo/unidadControl_isim_beh.exe -prj C:/Users/Juan/Desktop/MonocicloProcesador/ProcesadorMonociclo/unidadControl_beh.prj work.unidadControl 
+Running: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\fuse.exe -intstyle ise -incremental -o C:/Users/Juan/Documents/procesor/procesador1/Procesador_AMD_FULL_isim_beh.exe -prj C:/Users/Juan/Documents/procesor/procesador1/Procesador_AMD_FULL_beh.prj work.Procesador_AMD_FULL 
 ISim P.20131013 (signature 0x7708f090)
 Number of CPUs detected in this system: 4
 Turning on mult-threading, number of parallel sub-compilation jobs: 8 
 Determining compilation order of HDL files
-Parsing VHDL file "C:/Users/Juan/Desktop/MonocicloProcesador/ProcesadorMonociclo/UnidadControl.vhd" into library work
+Parsing VHDL file "C:/Users/Juan/Documents/procesor/procesador1/UC.vhd" into library work
+Parsing VHDL file "C:/Users/Juan/Documents/procesor/procesador1/Sumador.vhd" into library work
+Parsing VHDL file "C:/Users/Juan/Documents/procesor/procesador1/PC.vhd" into library work
+Parsing VHDL file "C:/Users/Juan/Documents/procesor/procesador1/NPC.vhd" into library work
+Parsing VHDL file "C:/Users/Juan/Documents/procesor/procesador1/instructionMemory.vhd" into library work
+Parsing VHDL file "C:/Users/Juan/Documents/procesor/procesador1/Procesador_AMD_FULL.vhd" into library work
 Starting static elaboration
 Completed static elaboration
 Compiling package standard
 Compiling package std_logic_1164
 Compiling package std_logic_arith
 Compiling package std_logic_unsigned
-Compiling package numeric_std
-Compiling architecture behavioral of entity unidadcontrol
+Compiling package textio
+Compiling architecture behavioral of entity Sumador [sumador_default]
+Compiling architecture behavioral of entity NPC [npc_default]
+Compiling architecture behavioral of entity PC [pc_default]
+Compiling architecture arqinstructionmemory of entity instructionMemory [instructionmemory_default]
+Compiling architecture behavioral of entity UC [uc_default]
+Compiling architecture behavioral of entity procesador_amd_full
 Time Resolution for simulation is 1ps.
-Waiting for 1 sub-compilation(s) to finish...
-Compiled 6 VHDL Units
-Built simulation executable C:/Users/Juan/Desktop/MonocicloProcesador/ProcesadorMonociclo/unidadControl_isim_beh.exe
-Fuse Memory Usage: 36596 KB
-Fuse CPU Usage: 952 ms
+Waiting for 3 sub-compilation(s) to finish...
+Compiled 16 VHDL Units
+Built simulation executable C:/Users/Juan/Documents/procesor/procesador1/Procesador_AMD_FULL_isim_beh.exe
+Fuse Memory Usage: 34508 KB
+Fuse CPU Usage: 796 ms
