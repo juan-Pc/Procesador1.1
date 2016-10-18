@@ -1,0 +1,7 @@
+[Inputs]
+Reset
+Clock
+=Direccion[31:0]=
+[Outputs]
+=NuevaDireccion[31:0]=
+[BiDir]

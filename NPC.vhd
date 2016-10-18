@@ -1,10 +1,10 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
+-- Company: UTP
+-- Engineer: Daniel Hernando Becerra Ocampo
 -- 
--- Create Date:    00:03:51 04/23/2016 
--- Design Name: 
--- Module Name:    PC - Behavioral 
+-- Create Date:    23:22:50 04/21/2016 
+-- Design Name:	 
+-- Module Name:    NPC - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -29,15 +29,14 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity PC is
-    Port ( Direccion : in  STD_LOGIC_VECTOR (31 downto 0);
-           Clock : in  STD_LOGIC;
-           Reset : in  STD_LOGIC;
-           NuevaDireccion : out  STD_LOGIC_VECTOR (31 downto 0));
-end PC;
+entity NPC is
+	Port ( Direccion : in  STD_LOGIC_VECTOR (31 downto 0);
+	NuevaDireccion : out  STD_LOGIC_VECTOR (31 downto 0);
+	Reset : in  STD_LOGIC;
+	Clock : in  STD_LOGIC);		  
+end NPC;
 
-architecture Behavioral of PC is
-
+architecture Behavioral of NPC is
 begin
 process(Clock, Direccion, Reset)
 	begin
@@ -49,6 +48,7 @@ process(Clock, Direccion, Reset)
 			end if;
 		end if;
 	end process;
+
 
 end Behavioral;
 

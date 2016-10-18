@@ -1,0 +1,5 @@
+vhdtdtfi -lib work PC.vhd -prj Procesador -o PC.spl -module PC -template C:/Xilinx/14.7/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family aspartan3e PC.spl D:/Biblioteca/Documents/Procesador/Procesador32/PC.sym 
+vhdtdtfi -prj Procesador -o D:/Biblioteca/Documents/Procesador/Procesador32/PC.tfi -module PC -template C:/Xilinx/14.7/ISE_DS/ISE//data/tfi.tft -deleteonerror -lib work PC.vhd 
+vhdtdtfi -lib work PC.vhd -prj Procesador -o PC.spl -module PC -template C:/Xilinx/14.7/ISE_DS/ISE//data/splfile.tft -deleteonerror 
+spl2sym -intstyle ise -family aspartan3e PC.spl D:/Biblioteca/Documents/Procesador/Procesador32/PC.sym 

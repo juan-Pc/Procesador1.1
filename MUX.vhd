@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date:    00:03:51 04/23/2016 
+-- Create Date:    18:42:40 04/25/2016 
 -- Design Name: 
--- Module Name:    PC - Behavioral 
+-- Module Name:    MUX - Behavioral 
 -- Project Name: 
 -- Target Devices: 
 -- Tool versions: 
@@ -29,26 +29,23 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity PC is
-    Port ( Direccion : in  STD_LOGIC_VECTOR (31 downto 0);
-           Clock : in  STD_LOGIC;
-           Reset : in  STD_LOGIC;
-           NuevaDireccion : out  STD_LOGIC_VECTOR (31 downto 0));
-end PC;
+entity MUX is
+	Port ( RfToMux : in  STD_LOGIC_VECTOR (31 downto 0);
+           inm : in  STD_LOGIC;
+           seuToMux : in  STD_LOGIC_VECTOR (31 downto 0);
+           MuxToAlu : out  STD_LOGIC_VECTOR (31 downto 0));
+end MUX;
 
-architecture Behavioral of PC is
+architecture Behavioral of MUX is
 
 begin
-process(Clock, Direccion, Reset)
-	begin
-		if(Reset = '1')then 
-			NuevaDireccion <= x"00000000";
-		else
-			if(rising_edge(clock))then
-				NuevaDireccion <= Direccion;
-			end if;
-		end if;
+	process(RfToMux,inm,seuToMux)
+		begin
+					if inm = '0' then
+						MuxToAlu <= RfToMux;--si el inmediato es cero retorna el valor del register file
+					else
+						MuxToAlu <= seuToMux;--si el valor es uno retorna el valor del SEU
+					end if;
 	end process;
-
 end Behavioral;
 

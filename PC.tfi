@@ -1,0 +1,12 @@
+
+
+
+// Instantiate the module
+PC instance_name (
+    .Direccion(Direccion), 
+    .Clock(Clock), 
+    .Reset(Reset), 
+    .NuevaDireccion(NuevaDireccion)
+    );
+
+

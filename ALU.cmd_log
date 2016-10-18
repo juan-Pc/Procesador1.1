@@ -1,0 +1,1 @@
+vhdtdtfi -prj Procesador -o D:/Biblioteca/Documents/Procesador/Procesador32/ALU.vhi -module ALU -template C:/Xilinx/14.7/ISE_DS/ISE//data/vhdlinst.tft -deleteonerror -lib work ALU.vhd 
